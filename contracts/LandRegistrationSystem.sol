@@ -53,19 +53,19 @@ contract LandRegistrationSystem {
 
     uint public unlockTime;
 
-    constructor(uint _unlockTime) payable {
-        require(
-            block.timestamp < _unlockTime,
-            "Unlock time should be in the future"
-        );
+    // constructor(uint _unlockTime) payable {
+    //     require(
+    //         block.timestamp < _unlockTime,
+    //         "Unlock time should be in the future"
+    //     );
 
-        unlockTime = _unlockTime;
-        owner = payable(msg.sender);
-    }
-
-    // constructor() {
-    //     owner = msg.sender;
+    //     unlockTime = _unlockTime;
+    //     owner = payable(msg.sender);
     // }
+
+    constructor() {
+        owner = msg.sender;
+    }
 
     modifier onlyLandOwner(uint landId) {
         require(lands[landId] == msg.sender, "You are not the land owner.");
